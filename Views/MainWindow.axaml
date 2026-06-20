@@ -1,0 +1,95 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaApplication5.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaApplication5.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="AvaloniaApplication5">
+   
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+    
+    
+    
+    <Grid Background="White" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Titel -->
+        <TextBlock Text="Kundenverwaltung" 
+                   Background="White"
+                   Foreground="Black"
+                   FontSize="26" FontWeight="Bold"
+                   Margin="10,10,0,20"
+                   />
+
+        <!-- Linke Seite: Formular -->
+        <StackPanel Background="Olive" 
+                    Margin="0,10,20,0"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Width="320">
+
+            <TextBox x:Name="NameBox" 
+                     Watermark="Name" 
+                     Margin="0,0,0,10"
+                     Height="35"/>
+
+            <TextBox x:Name="EmailBox" 
+                     Watermark="Email"
+                     Margin="0,0,0,10"
+                     Height="35"/>
+
+            <TextBox x:Name="NummerBox" 
+                     Watermark="Telefonnummer"
+                     Margin="0,0,0,20"
+                     Height="35"/>
+
+            <Button Content="Kunde hinzufügen"
+                    CornerRadius="10"
+                    Background="#4CAF50" 
+                    Foreground="Black"
+                    FontWeight="Bold"
+                    Margin="0,0,0,10"
+                    Click="click_hier"/>
+
+            <Button Content="Kundenliste anzeigen"
+                    CornerRadius="10"
+                    Background="#2196F3" 
+                    Foreground="Black"
+                    FontWeight="Bold"
+                    Click="Button_OnClick"/>
+            <Button Content="Künde Löschen"
+                    Margin="0,250,0,0"
+                    CornerRadius="10"
+                    Background="ForestGreen"
+                    Foreground="Black"
+                    FontWeight="Bold"
+                    Click="kundeLoschen"
+                    />
+            <TextBox x:Name="IdTextBox"
+                     Watermark = "Künde Id eingabe"
+                     />
+        </StackPanel>
+
+        <!-- Rechte Seite: Kundenliste -->
+        <Border Background="DarkKhaki" Padding="20" CornerRadius="10"
+                Grid.Row="1"
+                Grid.Column="1">
+            <ListBox x:Name="KundenListe" />
+        </Border>
+    </Grid>
+</Window>
